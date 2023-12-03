@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>SAL.Windows</RootNamespace>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<AssemblyTitle>SAL.Windows</AssemblyTitle>
+		<AssemblyName>SAL.Windows</AssemblyName>
+		<Company>Danila Korablin</Company>
+		<Product>Software Abstraction Layer Windows Core</Product>
+		<Copyright>Copyright © Danila Korablin 2009-2023</Copyright>
+		<Configuration>Debug</Configuration>
+		<AssemblyVersion>1.2.9.2</AssemblyVersion>
+		<FileVersion>1.2.9.2</FileVersion>
+		<Deterministic>false</Deterministic>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<OutputPath>..\..\bin\</OutputPath>
+		<DocumentationFile>..\..\bin\SAL.Windows.xml</DocumentationFile>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="IConfigurable.cs" />
+		<Compile Remove="PluginControl.cs" />
+	</ItemGroup>
+</Project>

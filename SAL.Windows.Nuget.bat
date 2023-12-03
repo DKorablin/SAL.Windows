@@ -1,0 +1,1 @@
+..\..\..\nuget.exe pack SAL.Windows\SAL.Windows.v12.csproj -IncludeReferencedProjects
