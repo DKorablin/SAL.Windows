@@ -72,8 +72,10 @@ jobs:
         submodules: true
     - name: Setup .NET
       uses: microsoft/setup-msbuild@v1.1
+    - name: Restore dependencies
+      run: MSbuild -p:RestorePackagesConfig=true
     - name: Build .NET v2.0
-      run: MSBuild -nologo -restore "${{github.workspace}}\${{env.SolutionName}}\${{env.SolutionName}}35.csproj" /property:Configuration=Release -property:OutputPath="${{github.workspace}}/bin/" -property:Version=${{needs.version.outputs.new_version}} -property:AssemblyOriginatorKeyFile="${{ steps.sign_key_file.outputs.filePath }}"
+      run: MSBuild -nologo "${{github.workspace}}\${{env.SolutionName}}\${{env.SolutionName}}35.csproj" /property:Configuration=Release -property:OutputPath="${{github.workspace}}/bin/" -property:Version=${{needs.version.outputs.new_version}} -property:AssemblyOriginatorKeyFile="${{ steps.sign_key_file.outputs.filePath }}"
     - name: Deploy artifacts
       uses: actions/upload-artifact@v3
       with:
