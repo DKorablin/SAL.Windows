@@ -25,6 +25,6 @@
 		<Compile Remove="PluginControl.cs" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="SAL.Flatbed" Version="1.2.9" />
+	  <PackageReference Include="SAL.Flatbed" Version="1.2.9.2" />
 	</ItemGroup>
 </Project>

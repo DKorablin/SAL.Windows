@@ -36,11 +36,10 @@
     <DocumentationFile>..\..\bin\SAL.Windows.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\..\..\AlphaOmega %28NoPwd%29.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SAL.Flatbed, Version=1.2.9.0, Culture=neutral, PublicKeyToken=a8ac5fc45c3adb8d, processorArchitecture=MSIL">
-      <HintPath>..\packages\SAL.Flatbed.1.2.9\lib\net20\SAL.Flatbed.dll</HintPath>
+    <Reference Include="SAL.Flatbed, Version=1.2.9.2, Culture=neutral, PublicKeyToken=a8ac5fc45c3adb8d, processorArchitecture=MSIL">
+      <HintPath>..\packages\SAL.Flatbed.1.2.9.2\lib\net20\SAL.Flatbed.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -64,9 +63,6 @@
     <Compile Include="Windows\IWindows.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\AlphaOmega %28NoPwd%29.snk">
-      <Link>AlphaOmega %28NoPwd%29.snk</Link>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
