@@ -5,11 +5,13 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: System.CLSCompliant(true)]
 
-#if !NETSTANDARD
+#if NETSTANDARD || NETCOREAPP
+[assembly: AssemblyMetadata("ProjectUrl", "https://dkorablin.ru/project/Default.aspx?File=76")]
+#else
 [assembly: AssemblyTitle("SAL.Windows")]
-[assembly: AssemblyProduct("SAL Interface for Windows applications")]
+[assembly: AssemblyProduct("SAL Interface for Windows applications .NET4-")]
 [assembly: AssemblyCompany("Danila Korablin")]
-[assembly: AssemblyCopyright("Copyright © Danila Korablin 2009-2023")]
+[assembly: AssemblyCopyright("Copyright © Danila Korablin 2009-2024")]
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
 #else

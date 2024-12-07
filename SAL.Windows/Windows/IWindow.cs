@@ -7,7 +7,6 @@ namespace SAL.Windows
 	/// <summary>Open window interface</summary>
 	public interface IWindow : IHostItem
 	{
-		#region Properties
 		/// <summary>The plugin that created the element</summary>
 		IPlugin Plugin { get; }
 
@@ -23,8 +22,6 @@ namespace SAL.Windows
 
 		/// <summary>Show or hide window</summary>
 		Boolean Visible { get; set; }
-		#endregion Properties
-		#region Events
 
 		/// <summary>The windows is first shown</summary>
 		event EventHandler Shown;
@@ -37,8 +34,6 @@ namespace SAL.Windows
 
 		/*/// <summary>The array of settings passed to the window has changed</summary>
 		event EventHandler SettingsChanged;*/
-		#endregion Events
-		#region Methods
 
 		/// <summary>Set window tab picture</summary>
 		/// <param name="icon">Icon that will be installed in the window. System.Drawing.Image</param>
@@ -60,6 +55,5 @@ namespace SAL.Windows
 		/// <param name="eventName">Event name</param>
 		/// <param name="handler">Callback method that need to be removed from window</param>
 		void RemoveEventHandler(String eventName, EventHandler<DataEventArgs> handler);
-		#endregion Methods
 	}
 }
