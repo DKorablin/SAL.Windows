@@ -1,22 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: ComVisible(false)]
 [assembly: Guid("c276bad5-c579-4bac-8205-28e2bfe0926e")]
 [assembly: System.CLSCompliant(true)]
 
 #if NETSTANDARD || NETCOREAPP
 [assembly: AssemblyMetadata("ProjectUrl", "https://dkorablin.ru/project/Default.aspx?File=76")]
-#else
-
-[assembly: AssemblyTitle("SAL.Windows")]
-[assembly: AssemblyDescription("SAL Interface for Windows applications .NET4-")]
-#if DEBUG
-[assembly: AssemblyConfiguration("Debug")]
-#else
-[assembly: AssemblyConfiguration("Release")]
-#endif
-[assembly: AssemblyCompany("Danila Korablin")]
-[assembly: AssemblyProduct("SAL Interface for Windows applications")]
-[assembly: AssemblyCopyright("Copyright © Danila Korablin 2009-2024")]
 #endif

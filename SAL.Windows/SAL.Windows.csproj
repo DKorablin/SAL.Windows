@@ -3,16 +3,8 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<OutputType>Library</OutputType>
 		<RootNamespace>SAL.Windows</RootNamespace>
-		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-		<AssemblyTitle>SAL.Windows</AssemblyTitle>
-		<AssemblyName>SAL.Windows</AssemblyName>
-		<Company>Danila Korablin</Company>
-		<Product>Software Abstraction Layer for Windows applications</Product>
-		<Description>SAL Interface for Windows applications .NET5+</Description>
-		<Copyright>Copyright © Danila Korablin 2009-2024</Copyright>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<Configuration>Debug</Configuration>
-		<AssemblyVersion>1.2.10.0</AssemblyVersion>
-		<FileVersion>1.2.10.0</FileVersion>
 		<Deterministic>false</Deterministic>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
