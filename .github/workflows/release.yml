@@ -127,26 +127,6 @@ jobs:
         password: ${{secrets.SIGN_PE_PASSWORD}}
         recursive: false
         files: ${{steps.find_binaries.outputs.files_to_sign}}
-    - name: Creating NuGet package
-      run: >
-        dotnet pack ${{env.SolutionName}}.sln --no-build --no-restore -o ${{env.ArtifactsDir}}\nupkg
-        /p:ArtifactsDir="${{env.ArtifactsDir}}"
-        /p:PackageVersion=${{needs.version.outputs.new_version}}
-        /p:IncludeSymbols=true
-        /p:DebugType=Portable
-        /p:EmbedUntrackedSources=true
-        /p:PublishRepositoryUrl=true
-        /p:EnablePackageValidation=true
-        /p:SymbolPackageFormat=snupkg
-    - name: NuGet login (OIDC)
-      uses: NuGet/login@v1
-      id: login
-      with:
-        user: ${{secrets.NUGET_USER}}
-    - name: Deploying to GitHub
-      run: dotnet nuget push ${{env.ArtifactsDir}}\nupkg\ --skip-duplicate --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/DKorablin/index.json
-    - name: Deploying to NuGet
-      run: dotnet nuget push ${{env.ArtifactsDir}}\nupkg\*.nupkg --skip-duplicate --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
     - name: Zipping artifacts
       run: |
         $basePath = "${{env.ArtifactsDir}}"
@@ -166,6 +146,26 @@ jobs:
         body: ${{needs.version.outputs.changelog}}
         artifactErrorsFailBuild: true
         generateReleaseNotes: true
+    - name: Creating NuGet package
+      run: >
+        dotnet pack ${{env.SolutionName}}.sln --no-build --no-restore -o ${{env.ArtifactsDir}}\nupkg
+        /p:ArtifactsDir="${{env.ArtifactsDir}}"
+        /p:PackageVersion=${{needs.version.outputs.new_version}}
+        /p:IncludeSymbols=true
+        /p:DebugType=Portable
+        /p:EmbedUntrackedSources=true
+        /p:PublishRepositoryUrl=true
+        /p:EnablePackageValidation=true
+        /p:SymbolPackageFormat=snupkg
+    - name: NuGet login (OIDC)
+      uses: NuGet/login@v1
+      id: login
+      with:
+        user: ${{secrets.NUGET_USER}}
+    - name: Deploying to GitHub
+      run: dotnet nuget push ${{env.ArtifactsDir}}\nupkg\ --skip-duplicate --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/DKorablin/index.json
+#    - name: Deploying to NuGet
+#      run: dotnet nuget push ${{env.ArtifactsDir}}\nupkg\*.nupkg --skip-duplicate --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
 
   failure_cleanup:
     name: Cleanup Tag On Failure

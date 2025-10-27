@@ -1,5 +1,4 @@
-﻿using System;
-using SAL.Flatbed;
+﻿using SAL.Flatbed;
 
 namespace SAL.Windows
 {

@@ -1,4 +1,5 @@
 # SAL.Windows
+[![Auto build](https://github.com/DKorablin/SAL.Windows/actions/workflows/release.yml/badge.svg)](https://github.com/DKorablin/SAL.Windows/releases/latest)
 
 SAL.Windows is a .NET library that provides a plugin-based architecture for developing extensible Windows Forms applications.
 It's part of the SAL (Software Abstraction Layer) framework that enables modular and flexible application development.
@@ -103,59 +104,80 @@ IWindow window = hostWindows.Windows.CreateWindow(
 ```
 ### Adding menus and toolbars
 ```csharp
-internal IHost Host { get; private set; }//It's allowed to launch the plugin with any host, and at startup - the plugin decides how to start
-
-public Plugin(IHost host){
-    this.Host = host;
-}
-
-Boolean IPlugin.OnConnection(ConnectMode mode)
+public class MyPlugin : IPlugin
 {
-    IHostWindows host = this.Host as IHostWindows;
-    if(host != null)
+    private IMenuItem _pluginMenuItem;
+    internal IHost Host { get; }
+
+    /// <summary>It's allowed to launch the plugin with any host, and at startup - the plugin decides how to start</summary>
+    public MyPlugin(IHost host)
+        => this.Host = host;
+
+    Boolean IPlugin.OnConnection(ConnectMode mode)
     {
-        IMenuItem menuTools = host.MainMenu.FindMenuItem("Tools");
-        if(menuTools != null)
+        IHostWindows host = this.Host as IHostWindows;
+        if(host != null)
         {
-            _pluginMenuItem = menuTools.Create("Menu Item Name");
-            _pluginMenuItem.Name = "tsmiToolsPluginMenuItem";
-            _pluginMenuItem.Click += new EventHandler(_pluginMenuItem_Click);
-            menuTools.Items.Insert(0, _pluginMenuItem);
-            return true;
+            IMenuItem menuTools = host.MainMenu.FindMenuItem("Tools");
+            if(menuTools != null)
+            {
+                _pluginMenuItem = menuTools.Create("Menu Item Name");
+                _pluginMenuItem.Name = "tsmiToolsPluginMenuItem";
+                _pluginMenuItem.Click += new EventHandler(_pluginMenuItem_Click);
+                menuTools.Items.Insert(0, _pluginMenuItem);
+                return true;
+            }
         }
+        return false;
     }
-    return false;
+
+    Boolean IPlugin.OnDisconnection(DisconnectMode mode)
+    {
+        if(this._pluginMenuItem != null)
+            this.HostWindows.MainMenu.Items.Remove(this._pluginMenuItem);
+        return true;
+    }
 }
 ```
 
 ### Opening window (UI should be inherited from UserControl class)
 ```csharp
-internal IHostWindows HostWindows { get; private set; }
-
-public Plugin(IHostWindows host) {
-    this.HostWindows = host;
-}//Creating an instance of a plugin is only possible in a host that implements the IHostWindows interface
-
-internal IWindow CreateWindow(String typeName, Boolean searchForOpened, Object args = null)
+public class MyPlugin : IPlugin
 {
-   return this.HostWindows.Windows.CreateWindow(this, typeof(PanelRdpClient).ToString(), false, DockState.DockLeft);
+    private IHostWindows HostWindows { get; private set; }
+
+    /// <summary>Creating an instance of this plugin is only possible in a host that implements the IHostWindows interface (Constructor is optional and works as IoC)</summary>
+    public MyPlugin(IHostWindows host)
+        => this.HostWindows = host;
+
+    Boolean IPlugin.OnConnection(ConnectMode mode)
+    {
+        this.HostWindows.Plugins.PluginsLoaded += (sender, e) => this.CreateWindow(typeof(PanelMyWindowControl).ToString(), true);
+        return true;
+    }
+
+    Boolean IPlugin.OnDisconnection(DisconnectMode mode)
+        => true;
+
+    private IWindow CreateWindow(String typeName, Boolean searchForOpened, Object args = null)
+        => this.HostWindows.Windows.CreateWindow(this, typeName, searchForOpened, DockState.DockLeft, args);
 }
 ```
 
 ### Receiving objects IWindow and IPlugin in the opened window.
 ```csharp
-public partial class PanelRdpClient : UserControl
+public partial class PanelMyWindowControl : UserControl
 {
     private IWindow Window { get { return (IWindow)base.Parent; } }
-    private PluginRdp Plugin { get { return (PluginWindows)this.Window.Plugin; } }
-    ...
+    private MyPlugin Plugin { get { return (MyPlugin)this.Window.Plugin; } }
+
     protected override void OnCreateControl()
     {
         this.Window.Caption = "I want cookie";
 
         base.OnCreateControl();
     }
-    ...
+
 }
 ```
 

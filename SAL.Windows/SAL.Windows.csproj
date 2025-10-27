@@ -3,8 +3,8 @@
 		<TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
 		<OutputType>Library</OutputType>
 		<RootNamespace>SAL.Windows</RootNamespace>
-		<Configuration>Debug</Configuration>
-		<Deterministic>false</Deterministic>
+		<Configuration>Release</Configuration>
+		<Deterministic>False</Deterministic>
 		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<GenerateDocumentationFile>False</GenerateDocumentationFile>
@@ -28,7 +28,7 @@
 		<PackageReadmeFile>docs\README.md</PackageReadmeFile>
 		<PackageIcon>docs\SAL.100.png</PackageIcon>
 		<RepositoryUrl>https://github.com/DKorablin/SAL.Windows</RepositoryUrl>
-		<PackageTags>SAL, Plugins, Windows</PackageTags>
+		<PackageTags>SAL;Plugins;Windows;abstraction-layer;interface</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -38,5 +38,13 @@
 
 	<ItemGroup>
 		<PackageReference Include="SAL.Flatbed" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+		<AssemblyAttributes Include="AssemblyMetadata">
+			<_Parameter1>ProjectUrl</_Parameter1>
+			<_Parameter2>https://github.com/DKorablin/SAL.Windows</_Parameter2>
+		</AssemblyAttributes>
 	</ItemGroup>
 </Project>
