@@ -17,7 +17,7 @@ namespace SAL.Windows
 		IWindow this[Int32 index] { get; }
 
 		/// <summary>Create window in the current host</summary>
-		/// <param name="pluginId">Plugin identifier that contains openting window control</param>
+		/// <param name="pluginId">Plugin identifier that contains opening window control</param>
 		/// <param name="formType">Form type from plugin to open</param>
 		/// <param name="searchForOpened">Before opening new window search for already opened window with same type and arguments</param>
 		/// <param name="args">Arguments passed to the plugin from the main application</param>
@@ -34,13 +34,13 @@ namespace SAL.Windows
 		/// <param name="showHint">Where to bind form by default</param>
 		/// <param name="args">
 		/// Arguments to transfer to <c>formType</c> after creation.
-		/// Transfered parameters must match properties from <c>IPluginSettings</c>.
+		/// Transferred parameters must match properties from <c>IPluginSettings</c>.
 		/// If not null values match, then window considered equals to opened (<c>searchForOpened</c>)
 		/// </param>
 		/// <remarks>
 		/// This method is used inside host and plugins to open window using reflection
 		/// </remarks>
-		/// <returns>Object, if window opened succesfully or null if window don't opened succesfully</returns>
+		/// <returns>Object, if window opened successfully or null if window don't opened successfully</returns>
 		IWindow CreateWindow(IPlugin plugin, String formType, Boolean searchForOpened, DockState showHint, Object args);
 	}
 }

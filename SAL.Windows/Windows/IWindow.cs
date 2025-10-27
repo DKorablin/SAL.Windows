@@ -48,7 +48,7 @@ namespace SAL.Windows
 
 		/// <summary>Add event to the window public event</summary>
 		/// <param name="eventName">Event name</param>
-		/// <param name="handler">Callback method that will receive eent from window</param>
+		/// <param name="handler">Callback method that will receive sent from window</param>
 		void AddEventHandler(String eventName, EventHandler<DataEventArgs> handler);
 
 		/// <summary>Remove previously attached event from window</summary>

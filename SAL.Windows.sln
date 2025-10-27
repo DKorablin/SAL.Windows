@@ -5,17 +5,17 @@ VisualStudioVersion = 17.7.34302.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAL.Windows", "SAL.Windows\SAL.Windows.csproj", "{79609286-F2FB-4D86-8A30-26BBE8334DAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAL.Windows35", "SAL.Windows\SAL.Windows35.csproj", "{9C14A7C6-5229-4611-A389-C95C92BDAF46}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5F6EFC15-F073-4D9C-803B-AB2F555D0D94}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
 		NuGet.config = NuGet.config
 		README.md = README.md
-		SAL.Windows.dll.nuspec = SAL.Windows.dll.nuspec
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{C88C476F-9F3C-46F5-A3B8-BE5A849481B2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{C88C476F-9F3C-46F5-A3B8-BE5A849481B2}"
 	ProjectSection(SolutionItems) = preProject
 		.github\dependabot.yml = .github\dependabot.yml
 		.github\workflows\release.yml = .github\workflows\release.yml
@@ -32,10 +32,6 @@ Global
 		{79609286-F2FB-4D86-8A30-26BBE8334DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79609286-F2FB-4D86-8A30-26BBE8334DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79609286-F2FB-4D86-8A30-26BBE8334DAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C14A7C6-5229-4611-A389-C95C92BDAF46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C14A7C6-5229-4611-A389-C95C92BDAF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C14A7C6-5229-4611-A389-C95C92BDAF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C14A7C6-5229-4611-A389-C95C92BDAF46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

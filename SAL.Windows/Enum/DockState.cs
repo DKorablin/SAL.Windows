@@ -7,7 +7,7 @@ namespace SAL.Windows
 	{
 		/// <summary>Unknown</summary>
 		Unknown = 0,
-		/// <summary>Can be binded to interface. (Not modal window)</summary>
+		/// <summary>Can be bound to interface. (Not modal window)</summary>
 		Float = 1,
 		/// <summary>Anchor to the top edge of the window with the auto-hide feature</summary>
 		DockTopAutoHide = 2,

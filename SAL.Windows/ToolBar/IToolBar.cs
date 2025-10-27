@@ -21,20 +21,20 @@ namespace SAL.Windows
 		IToolBarItem Create(String text);
 
 		/// <summary>Create element on toolbar panel</summary>
-		/// <param name="text">Text wich is set on created toolbar element</param>
+		/// <param name="text">Text which is set on created toolbar element</param>
 		/// <param name="image">Image System.Drawing.Image set on created element (if supported)</param>
 		/// <returns>Interface of created element</returns>
 		IToolBarItem Create(String text, Object image);
 
 		/// <summary>Create element on toolbar panel</summary>
-		/// <param name="text">Text wich is set on created toolbar element</param>
+		/// <param name="text">Text which is set on created toolbar element</param>
 		/// <param name="image">Image System.Drawing.Image that will be set on created element (if supported)</param>
 		/// <param name="onClick">Event that will be invoked on element click</param>
 		/// <returns>Interface of created element</returns>
 		IToolBarItem Create(String text, Object image, EventHandler onClick);
 
 		/// <summary>Search for element on toolbar by name</summary>
-		/// <param name="text">The name of the element to be searchd on the toolbar</param>
+		/// <param name="text">The name of the element to be searched on the toolbar</param>
 		/// <returns>Found item or null of nothing found</returns>
 		IToolBarItem FindToolBarItem(String text);
 	}

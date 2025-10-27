@@ -7,7 +7,7 @@ namespace SAL.Windows
 	/// <summary>Represents a collection of <c>System.Windows.Forms.ToolStripItem</c> objects</summary>
 	public interface IMenuItemCollection : IHostItem,IEnumerable
 	{
-		/// <summary>Gets the elemnts count in the collection</summary>
+		/// <summary>Gets the elements count in the collection</summary>
 		Int32 Count { get; }
 
 		/// <summary>Gets the item at the specified index</summary>
@@ -25,7 +25,7 @@ namespace SAL.Windows
 		/// <returns>An System.Int32 representing the zero-based index of the new item in the collection</returns>
 		Int32 Add(IMenuItem item);
 
-		/// <summary>Add renge of menu items to current collection</summary>
+		/// <summary>Add range of menu items to current collection</summary>
 		/// <param name="items">Array of menu items to add to the collection</param>
 		void AddRange(IMenuItem[] items);
 

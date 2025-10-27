@@ -1,23 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFrameworks>net35;netstandard2.0</TargetFrameworks>
 		<OutputType>Library</OutputType>
 		<RootNamespace>SAL.Windows</RootNamespace>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<Configuration>Debug</Configuration>
 		<Deterministic>false</Deterministic>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<OutputPath>..\..\bin\</OutputPath>
-		<DocumentationFile>..\..\bin\SAL.Windows.xml</DocumentationFile>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>False</GenerateDocumentationFile>
 		<CopyLocalLockFileAssemblies>True</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<Optimize>true</Optimize>
+		<PublishSingleFile>true</PublishSingleFile>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<!--nuspec-->
+	<PropertyGroup>
+		<PackageId>SAL.Windows</PackageId>
+		<Version>$(Version)</Version>
+		<Title>Software abstraction layer Windows interfaces</Title>
+		<Description>Software abstraction layer core API. SAL Interface for Windows application.</Description>
+		<Authors>Danila Korablin</Authors>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>docs\README.md</PackageReadmeFile>
+		<PackageIcon>docs\SAL.100.png</PackageIcon>
+		<RepositoryUrl>https://github.com/DKorablin/SAL.Windows</RepositoryUrl>
+		<PackageTags>SAL, Plugins, Windows</PackageTags>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<Compile Remove="IConfigurable.cs" />
-		<Compile Remove="PluginControl.cs" />
+		<None Include="..\README.md" Pack="true" PackagePath="\docs" />
+		<None Include="..\Images.Shared\SAL.100.png" Pack="true" PackagePath="\docs" />
 	</ItemGroup>
+
 	<ItemGroup>
-	  <PackageReference Include="SAL.Flatbed" Version="1.2.10" />
+		<PackageReference Include="SAL.Flatbed" />
 	</ItemGroup>
 </Project>

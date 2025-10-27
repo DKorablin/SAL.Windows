@@ -5,7 +5,7 @@ namespace SAL.Windows
 	/// <summary>
 	/// Represents a selectable option displayed on a <c>System.Windows.Forms.MenuStrip</c> or <c>System.Windows.Forms.ContextMenuStrip</c>.
 	/// Although <c>System.Windows.Forms.ToolStripMenuItem</c>
-	/// replaces and adds functionality to the <c>System.Windows.Forms.MenuItem</c> controlof previous versions,
+	/// replaces and adds functionality to the <c>System.Windows.Forms.MenuItem</c> control of previous versions,
 	/// <c>System.Windows.Forms.MenuItem</c> is retained for both backward compatibility and future use if you choose
 	/// </summary>
 	public interface IMenuItem : IMenu

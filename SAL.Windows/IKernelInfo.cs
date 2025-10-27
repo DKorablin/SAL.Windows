@@ -9,7 +9,7 @@ namespace SAL.Windows
 		/// <summary>Application name</summary>
 		String ApplicationName { get; }
 
-		/// <summary>Applciation icon</summary>
+		/// <summary>Application icon</summary>
 		Object ApplicationIcon { get; }
 
 		/// <summary>Application logo</summary>
