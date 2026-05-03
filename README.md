@@ -1,5 +1,7 @@
-# SAL.Windows
+﻿# SAL.Windows
 [![Auto build](https://github.com/DKorablin/SAL.Windows/actions/workflows/release.yml/badge.svg)](https://github.com/DKorablin/SAL.Windows/releases/latest)
+[![NuGet](https://img.shields.io/nuget/v/SAL.Windows)](https://www.nuget.org/packages/SAL.Windows)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/SAL.Windows)](https://www.nuget.org/packages/SAL.Windows)
 
 SAL.Windows is a .NET library that provides a plugin-based architecture for developing extensible Windows Forms applications.
 It's part of the SAL (Software Abstraction Layer) framework that enables modular and flexible application development.

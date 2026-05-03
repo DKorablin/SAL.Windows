@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SAL.Windows
+﻿namespace SAL.Windows
 {
 	/// <summary>Plugin window anchor status in interface</summary>
 	public enum DockState
