@@ -5,7 +5,7 @@
 	<ItemGroup>
 		<PackageVersion Include="SAL.Flatbed" Version="1.2.12" />
 		<!--Source Link Support-->
-		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="10.0.203">
 			<PrivateAssets>All</PrivateAssets>
 		</PackageVersion>
 		<!--Analyzers-->
