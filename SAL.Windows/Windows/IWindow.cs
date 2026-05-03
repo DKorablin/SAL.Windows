@@ -8,7 +8,7 @@ namespace SAL.Windows
 	public interface IWindow : IHostItem
 	{
 		/// <summary>The plugin that created the element</summary>
-		IPlugin Plugin { get; }
+		IPluginDescription Plugin { get; }
 
 		/// <summary>Control that hosted in current window</summary>
 		/// <remarks>

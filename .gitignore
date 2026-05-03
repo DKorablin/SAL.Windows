@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Local NuGet feed - folder must exist but contents are machine-specific
+/LocalNuGet/*
+!/LocalNuGet/.gitkeep
+
 # User-specific files
 *.rsuser
 *.suo

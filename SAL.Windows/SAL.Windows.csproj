@@ -17,6 +17,10 @@
 		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(SignAssembly)' == 'true'">
+		<DefineConstants>$(DefineConstants);SIGN_ASSEMBLY</DefineConstants>
+	</PropertyGroup>
+
 	<!--nuspec-->
 	<PropertyGroup>
 		<PackageId>SAL.Windows</PackageId>

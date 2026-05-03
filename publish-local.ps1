@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
 	Builds, signs, packs and publishes SAL.Windows to a local NuGet feed folder.
 
@@ -20,6 +20,8 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
+
+$PackageName = "SAL.Windows"
 
 # -- Resolve version from Directory.Build.props if not supplied --
 if(-not $Version)
@@ -43,7 +45,7 @@ if($sources -notmatch [regex]::Escape($LocalFeed))
 }
 
 # -- Remove any older local pre-release of this package to avoid cache confusion --
-$oldPackages = @(Get-ChildItem -Path $LocalFeed -Filter "SAL.Windows.*.nupkg" -ErrorAction SilentlyContinue)
+$oldPackages = @(Get-ChildItem -Path $LocalFeed -Filter "$PackageName.*.nupkg" -ErrorAction SilentlyContinue)
 if($oldPackages.Count -gt 0)
 {
 	$oldPackages | Remove-Item -Force
@@ -58,7 +60,7 @@ if(-not (Test-Path $snkPath))
 	$snkPath = $null
 }
 
-$project = Join-Path $PSScriptRoot "SAL.Windows\SAL.Windows.csproj"
+$project = Join-Path $PSScriptRoot "$PackageName\$PackageName.csproj"
 $signArgs = if($snkPath) { @("/p:SignAssembly=true", "/p:AssemblyOriginatorKeyFile=$snkPath") } else { @() }
 
 dotnet pack $project `
@@ -70,7 +72,7 @@ dotnet pack $project `
 if($LASTEXITCODE -ne 0) { throw "dotnet pack failed with exit code $LASTEXITCODE" }
 
 Write-Host ""
-Write-Host "Published SAL.Windows $Version to $LocalFeed"
+Write-Host "Published $PackageName $Version to $LocalFeed"
 Write-Host ""
 Write-Host "In consuming solutions, reference it with:"
-Write-Host "  <PackageReference Include=""SAL.Windows"" Version=""$Version"" />"
+Write-Host "  <PackageReference Include=""$PackageName"" Version=""$Version"" />"
