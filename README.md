@@ -39,6 +39,7 @@ SAL supports multiple host types:
 - MDI Applications
   1. [Flatbed.MDI](https://dkorablin.github.io/Flatbed-MDI/)
   2. [Flatbed.MDI (Avalon)](https://dkorablin.github.io/Flatbed-MDI-Avalon/)
+  3. [Flatbed.MDI (AvaloniaUI)](https://dkorablin.github.io/Flatbed-MDI-AvaloniaUI/)
 - Dialog-based Applications
   1. [Flatbed.Dialog](https://dkorablin.github.io/Flatbed-Dialog/)
   2. [Flatbed.Dialog (Lite)](https://dkorablin.github.io/Flatbed-Dialog-Lite/)
@@ -171,7 +172,7 @@ public class MyPlugin : IPlugin
 public partial class PanelMyWindowControl : UserControl
 {
     private IWindow Window { get { return (IWindow)base.Parent; } }
-    private MyPlugin Plugin { get { return (MyPlugin)this.Window.Plugin; } }
+    private MyPlugin Plugin { get { return (MyPlugin)this.Window.Plugin.Instance; } }
 
     protected override void OnCreateControl()
     {
